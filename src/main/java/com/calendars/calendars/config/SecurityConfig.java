@@ -57,6 +57,7 @@ public class SecurityConfig {
                         .requestMatchers("/env", "/health-check", "/base-response", "/error-handler").permitAll()
                         .requestMatchers("/members/sign-in").permitAll()
                         .requestMatchers("/calendars/**").permitAll()
+                        .requestMatchers("/reviews/**").permitAll()
                         .requestMatchers("/test").authenticated()
                         .requestMatchers("/members/**").authenticated()
                         .anyRequest().denyAll());

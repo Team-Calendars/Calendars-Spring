@@ -31,9 +31,12 @@ public class Review extends BaseEntity {
     private Calendar calendar;
 
     @Column(nullable = false)
-    private Integer rate;
+    private Double rate;
 
     @Column
-    private Integer comment;
+    private String comment;
 
+    public void updateRate(Double rate) { this.rate = rate; }
+
+    public void updateComment(String comment) { this.comment = comment; }
 }
