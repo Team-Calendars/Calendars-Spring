@@ -34,7 +34,7 @@ public class CalendarController {
         return BaseResponse.onSuccess(calendarService.getAllCalendar(member));
     }
 
-    @Operation(summary = "캘린더 수정 API", description = "캘린더 삭제 API 입니다.")
+    @Operation(summary = "캘린더 수정 API", description = "캘린더 수정 API 입니다.")
     @PostMapping("/update")
     public BaseResponse<CalendarResponse.CalendarUpdate> updateCalendar(
             @AuthenticationMember Member member,
@@ -47,7 +47,7 @@ public class CalendarController {
     @DeleteMapping("{calendarId}")
     public BaseResponse<CalendarResponse.CalendarDelete> deleteCalendar(
             @AuthenticationMember Member member,
-            @PathVariable(name = "calendarId") Long calendarId) {
+            @PathVariable(name = "reviewId") Long calendarId) {
         return BaseResponse.onSuccess(calendarService.deleteCalendar(member, calendarId));
     }
 
