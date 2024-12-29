@@ -24,4 +24,10 @@ public class MemberCalendarMapper {
                 .memberCalendarId(memberCalendar.getId())
                 .build();
     }
+
+    public MemberCalendarResponse.DeleteMemberCalendar toDeleteMemberCalender(MemberCalendar memberCalendar) {
+        return MemberCalendarResponse.DeleteMemberCalendar.builder()
+                .memberCalendarId(memberCalendar.getId())
+                .build();
+    }
 }

@@ -9,6 +9,8 @@ import com.calendars.calendars.domain.memberCalendar.entity.CalendarPermission;
 import com.calendars.calendars.domain.memberCalendar.entity.MemberCalendar;
 import com.calendars.calendars.domain.memberCalendar.mapper.MemberCalendarMapper;
 import com.calendars.calendars.domain.memberCalendar.repository.MemberCalendarRepository;
+import com.calendars.calendars.global.errorCode.MemberCalendarErrorCode;
+import com.calendars.calendars.global.errorCode.MemberErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,19 @@ public class MemberCalendarServiceImpl implements MemberCalendarService {
 
         memberCalendarRepository.save(memberCalendar);
         return memberCalendarMapper.toCreateMemberCalendar(memberCalendar);
+    }
+
+    @Override
+    public MemberCalendarResponse.DeleteMemberCalendar deleteMemberCalendarByCalendar(Calendar calendar) {
+        MemberCalendar memberCalendar = findMemberCalendarByCalendarId(calendar.getId());
+        memberCalendar.delete();
+        return memberCalendarMapper.toDeleteMemberCalender(memberCalendar);
+    }
+
+    private MemberCalendar findMemberCalendarByCalendarId(Long calendarId) {
+        MemberCalendar memberCalendar = memberCalendarRepository.findByCalendarId(calendarId).orElseThrow(
+                () -> new RuntimeException(MemberCalendarErrorCode.MEMBER_CALENDAR_NOT_FOUND.getCode()));
+        return memberCalendar;
     }
 
 }

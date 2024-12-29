@@ -52,4 +52,12 @@ public class CalendarResponse {
         private Long scheduleCount;
     }
 
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class CalendarDelete {
+        @NotEmpty
+        private Long calendarId;
+    }
 }

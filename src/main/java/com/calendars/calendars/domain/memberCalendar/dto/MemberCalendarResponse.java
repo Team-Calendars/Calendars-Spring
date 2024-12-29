@@ -13,4 +13,11 @@ public class MemberCalendarResponse {
     public static class CreateMemberCalendar {
         private Long memberCalendarId;
     }
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class DeleteMemberCalendar {
+        private Long memberCalendarId;
+    }
 }

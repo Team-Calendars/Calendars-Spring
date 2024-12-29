@@ -50,4 +50,10 @@ public class CalendarMapper {
                 .scheduleCount(calendar.getScheduleCount())
                 .build();
     }
+
+    public CalendarResponse.CalendarDelete toCalendarDelete(Calendar calendar) {
+        return CalendarResponse.CalendarDelete.builder()
+                .calendarId(calendar.getId())
+                .build();
+    }
 }

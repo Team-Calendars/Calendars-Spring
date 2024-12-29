@@ -11,4 +11,6 @@ public interface CalendarService {
     CalendarResponse.CalendarCreate createCalendar(Member member, CalendarRequest.CalendarCreate request);
 
     CalendarResponse.CalendarGetAll getAllCalendar(Member member);
+
+    CalendarResponse.CalendarDelete deleteCalendar(Member member, Long calendarId);
 }

@@ -47,4 +47,20 @@ public class CalendarServiceImpl implements CalendarService {
         List<Calendar> calendars = calendarRepository.findAll();
         return calendarMapper.toCalendarGetAll(calendars);
     }
+
+    @Override
+    @Transactional
+    public CalendarResponse.CalendarDelete deleteCalendar(Member member, Long calendarId) {
+        Calendar calendar = findCalendar(calendarId);
+        checkPermission(member, calendar);
+        calendar.delete();
+        memberCalendarService.deleteMemberCalendarByCalendar(calendar);
+        return calendarMapper.toCalendarDelete(calendar);
+    }
+
+    private void checkPermission(Member member, Calendar calendar) {
+        if (!member.getId().equals(calendar.getMaster().getId())) {
+            throw new RestApiException(CalendarErrorCode.CALENDAR_NO_PERMISSION);
+        }
+    }
 }
