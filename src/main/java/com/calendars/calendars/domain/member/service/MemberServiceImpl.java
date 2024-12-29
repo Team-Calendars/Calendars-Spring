@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService {
     private SecretKey secretKey;
 
     @Override
-    public Member findById(Long memberId) {
+    public Member findMember(Long memberId) {
         return memberRepository.findById(memberId).orElseThrow(() -> new RestApiException(MemberErrorCode.MEMBER_NOT_FOUND));
     }
 
@@ -78,7 +78,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public MemberResponse.MemberResign resign(Member member) {
-        Member resignMember = findById(member.getId());
+        Member resignMember = findMember(member.getId());
         resignMember.resign();
         return memberMapper.toMemberResign(member);
     }

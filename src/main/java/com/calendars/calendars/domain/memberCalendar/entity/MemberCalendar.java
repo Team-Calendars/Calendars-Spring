@@ -31,6 +31,6 @@ public class MemberCalendar extends BaseEntity {
     private Calendar calendar;
 
     @Column(nullable = false)
-    private Permission permission;
+    private CalendarPermission calendarPermission;
 
 }
