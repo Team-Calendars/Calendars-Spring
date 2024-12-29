@@ -9,4 +9,6 @@ public interface CalendarService {
     Calendar findCalendar(Long calendarId);
 
     CalendarResponse.CalendarCreate createCalendar(Member member, CalendarRequest.CalendarCreate request);
+
+    CalendarResponse.CalendarGetAll getAllCalendar(Member member);
 }

@@ -1,5 +1,6 @@
 package com.calendars.calendars.domain.calendar.entity;
 
+import com.calendars.calendars.domain.member.entity.Member;
 import com.calendars.calendars.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,6 +19,10 @@ public class Calendar extends BaseEntity {
     @Column(name = "calendar_id")
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member master;
+
     @Column(nullable = false)
     private String title;
 
@@ -35,4 +40,7 @@ public class Calendar extends BaseEntity {
 
     @Column(nullable = false)
     private String themeColor;
+
+    @Column(nullable = false)
+    private Long scheduleCount;
 }

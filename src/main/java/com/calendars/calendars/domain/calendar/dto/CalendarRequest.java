@@ -17,8 +17,6 @@ public class CalendarRequest {
         @NotEmpty
         private String title;
         private String description;
-        @NotEmpty
-        private Double reviewRateAverage;
         private String coverUrl;
         private String thumbnailUrl;
         @NotEmpty

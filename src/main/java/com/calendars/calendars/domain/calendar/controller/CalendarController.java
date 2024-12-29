@@ -27,5 +27,12 @@ public class CalendarController {
         return BaseResponse.onSuccess(calendarService.createCalendar(member, request));
     }
 
+    @Operation(summary = "캘린더 전체 조회 API", description = "캘린더 전체 조회 API 입니다.")
+    @GetMapping
+    public BaseResponse<CalendarResponse.CalendarGetAll> getAllCalendar(
+            @AuthenticationMember Member member) {
+        return BaseResponse.onSuccess(calendarService.getAllCalendar(member));
+    }
+
 
 }

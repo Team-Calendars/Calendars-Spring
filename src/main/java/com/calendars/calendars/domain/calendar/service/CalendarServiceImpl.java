@@ -17,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -34,9 +36,15 @@ public class CalendarServiceImpl implements CalendarService {
     @Override
     @Transactional
     public CalendarResponse.CalendarCreate createCalendar(Member member, CalendarRequest.CalendarCreate request) {
-        Calendar calendar = calendarMapper.toCalendar(request.getTitle(), request.getDescription(), request.getReviewRateAverage(), request.getCoverUrl(), request.getThumbnailUrl(), request.getThemeColor());
+        Calendar calendar = calendarMapper.toCalendar(member, request.getTitle(), request.getDescription(), request.getCoverUrl(), request.getThumbnailUrl(), request.getThemeColor());
         calendarRepository.save(calendar);
         memberCalendarService.createMemberCalendar(member, calendar, CalendarPermission.MASTER);
         return calendarMapper.toCalendarCreate(calendar);
+    }
+
+    @Override
+    public CalendarResponse.CalendarGetAll getAllCalendar(Member member) {
+        List<Calendar> calendars = calendarRepository.findAll();
+        return calendarMapper.toCalendarGetAll(calendars);
     }
 }
