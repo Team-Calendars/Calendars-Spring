@@ -13,7 +13,20 @@ public class CalendarRequest {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class CalendarCreate {
+        @NotEmpty
+        private String title;
+        private String description;
+        private String coverUrl;
+        private String thumbnailUrl;
+        @NotEmpty
+        private String themeColor;
+    }
 
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class CalendarUpdate {
         @NotEmpty
         private String title;
         private String description;

@@ -43,4 +43,13 @@ public class Calendar extends BaseEntity {
 
     @Column(nullable = false)
     private Long scheduleCount;
+
+    public void updateTitle(String title) { this.title = title; }
+    public void updateDescription(String description) { this.description = description; }
+    public void updateReviewRateAverage(Double reviewRateAverage) { this.reviewRateAverage = reviewRateAverage; }
+    public void updateCoverUrl(String coverUrl) { this.coverUrl = coverUrl; }
+    public void updateThumbnailUrl(String thumbnailUrl) { this.thumbnailUrl = thumbnailUrl; }
+    public void updateThemeColor(String themeColor) { this.themeColor = themeColor; }
+    public void updateScheduleCount(Long scheduleCount) { this.scheduleCount = scheduleCount; }
+
 }

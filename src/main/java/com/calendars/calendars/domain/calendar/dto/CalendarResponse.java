@@ -60,4 +60,13 @@ public class CalendarResponse {
         @NotEmpty
         private Long calendarId;
     }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class CalendarUpdate {
+        @NotEmpty
+        private Long calendarId;
+    }
 }

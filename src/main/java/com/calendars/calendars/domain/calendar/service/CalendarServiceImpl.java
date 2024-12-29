@@ -58,6 +58,19 @@ public class CalendarServiceImpl implements CalendarService {
         return calendarMapper.toCalendarDelete(calendar);
     }
 
+    @Override
+    @Transactional
+    public CalendarResponse.CalendarUpdate updateCalendar(Member member, Long calendarId, CalendarRequest.CalendarUpdate request) {
+        Calendar calendar = findCalendar(calendarId);
+        checkPermission(member, calendar);
+        calendar.updateTitle(request.getTitle());
+        calendar.updateDescription(request.getDescription());
+        calendar.updateCoverUrl(request.getCoverUrl());
+        calendar.updateThumbnailUrl(request.getThumbnailUrl());
+        calendar.updateThemeColor(request.getThemeColor());
+        return calendarMapper.toCalendarUpdate(calendar);
+    }
+
     private void checkPermission(Member member, Calendar calendar) {
         if (!member.getId().equals(calendar.getMaster().getId())) {
             throw new RestApiException(CalendarErrorCode.CALENDAR_NO_PERMISSION);

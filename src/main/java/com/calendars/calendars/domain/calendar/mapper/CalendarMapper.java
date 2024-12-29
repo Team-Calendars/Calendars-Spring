@@ -56,4 +56,10 @@ public class CalendarMapper {
                 .calendarId(calendar.getId())
                 .build();
     }
+
+    public CalendarResponse.CalendarUpdate toCalendarUpdate(Calendar calendar) {
+        return CalendarResponse.CalendarUpdate.builder()
+                .calendarId(calendar.getId())
+                .build();
+    }
 }
