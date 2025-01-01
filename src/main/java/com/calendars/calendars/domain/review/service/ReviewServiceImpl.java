@@ -37,7 +37,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
-    public ReviewResponse.ReviewCreate createCalendar(Member member, Long calendarId, ReviewRequest.ReviewCreate request) {
+    public ReviewResponse.ReviewCreate createReview(Member member, Long calendarId, ReviewRequest.ReviewCreate request) {
         Calendar calendar = calendarService.findCalendar(calendarId);
         Optional<Review> existingReview = reviewRepository.findByCalendarIdAndMemberId(calendarId, member.getId());
         // 이미 리뷰가 존재한다면 새로 생성 못하게 막아야 한다.
@@ -51,7 +51,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewResponse.ReviewGetAllByCalendar getAllReviewByCalendar(Member member, Long calendarId) {
-//        Calendar calendar = calendarService.findCalendar(calendarId);
         List<Review> reviews = reviewRepository.findAllByCalendarId(calendarId);
         return reviewMapper.toReviewGetAllByCalendar(reviews);
     }

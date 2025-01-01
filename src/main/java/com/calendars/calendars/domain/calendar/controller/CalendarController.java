@@ -47,7 +47,7 @@ public class CalendarController {
     @DeleteMapping("{calendarId}")
     public BaseResponse<CalendarResponse.CalendarDelete> deleteCalendar(
             @AuthenticationMember Member member,
-            @PathVariable(name = "reviewId") Long calendarId) {
+            @PathVariable(name = "calendarId") Long calendarId) {
         return BaseResponse.onSuccess(calendarService.deleteCalendar(member, calendarId));
     }
 
