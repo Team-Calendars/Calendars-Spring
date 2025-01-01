@@ -47,4 +47,18 @@ public class Schedule extends BaseEntity {
     @Column
     private String note;
 
+    public void updateTitle(String title) { this.title = title; }
+
+    public void updateStartAt(LocalDateTime startAt) { this.startAt = startAt; }
+
+    public void updateEndAt(LocalDateTime endAt) { this.endAt = endAt; }
+
+    public void updateIsRepeat(Boolean isRepeat) { this.isRepeat = isRepeat; }
+
+    public void updateLinkUrl(String linkUrl) { this.linkUrl = linkUrl; }
+
+    public void updatePlace(String place) { this.place = place; }
+
+    public void updateNote(String note) { this.note = note; }
+
 }

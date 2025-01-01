@@ -58,6 +58,7 @@ public class SecurityConfig {
                         .requestMatchers("/members/sign-in").permitAll()
                         .requestMatchers("/calendars/**").permitAll()
                         .requestMatchers("/reviews/**").permitAll()
+                        .requestMatchers("/schedules/**").permitAll()
                         .requestMatchers("/test").authenticated()
                         .requestMatchers("/members/**").authenticated()
                         .anyRequest().denyAll());

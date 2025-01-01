@@ -26,7 +26,7 @@ public class ReviewController {
             @AuthenticationMember Member member,
             @PathVariable(name = "calendarId") Long calendarId,
             @RequestBody ReviewRequest.ReviewCreate request) {
-        return BaseResponse.onSuccess(reviewService.createCalendar(member, calendarId, request));
+        return BaseResponse.onSuccess(reviewService.createReview(member, calendarId, request));
     }
 
     @Operation(summary = "(캘린더 별) 리뷰 조회 API", description = "(캘린더 별) 리뷰 조회 API 입니다.")
